@@ -26,6 +26,7 @@
         button {
             all: initial;
             padding: 0.25em 0.75em;
+            font-family: 'segoe ui', sans-serif;
             font-size: 1em;
             color: #e2e2e2;
             background-color: darkgoldenrod;
@@ -62,7 +63,7 @@
         fetchBtn = document.querySelector('.fetch-btn');
 
         fetchBtn.addEventListener('click', async () => {
-            const response = await fetch('/.netlify/functions/hello-world')
+            const response = await fetch('/.netlify/functions/hello-netlify')
             .then(response => response.json()
 	)
 
