@@ -4,9 +4,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%220%22 fill=%22%23158e18%22></rect><path fill=%22%23fff%22 d=%22M17.85 82.57Q9.47 82.57 4.41 78.15Q-0.65 73.74-0.65 66.56L-0.65 66.56L11.68 66.56Q11.68 69.04 13.38 70.56Q15.09 72.08 17.85 72.08L17.85 72.08L26.13 72.08Q31.65 72.08 31.65 69.04L31.65 69.04L31.65 67.48Q31.65 66.56 30.73 65.78Q29.81 65.00 28.24 64.72L28.24 64.72L12.33 61.96Q6.71 61.04 3.45 57.96Q0.18 54.88 0.18 50.74L0.18 50.74L0.18 47.70Q0.18 41.81 5.01 38.50Q9.84 35.19 18.49 35.19L18.49 35.19L25.67 35.19Q33.39 35.19 38.13 39.28Q42.87 43.38 42.87 50.09L42.87 50.09L30.54 50.09Q30.54 48.07 29.21 46.87Q27.87 45.68 25.67 45.68L25.67 45.68L18.67 45.68Q12.69 45.68 12.69 48.44L12.69 48.44L12.69 49.91Q12.69 50.92 13.48 51.61Q14.26 52.30 15.73 52.58L15.73 52.58L32.47 55.61Q37.72 56.53 40.94 59.52Q44.16 62.51 44.16 66.28L44.16 66.28L44.16 69.60Q44.16 75.58 39.24 79.07Q34.31 82.57 26.13 82.57L26.13 82.57L17.85 82.57ZM52.44 81.83L52.44 17.43L100.65 17.43L100.65 28.47L65.13 28.47L65.13 45.77L97.24 45.77L97.24 56.81L65.13 56.81L65.13 81.83L52.44 81.83Z%22></path></svg>" />
     <title>Serverless Functions</title>
+    <style>
+        body {
+            background-color: #181818;
+            color: #ccc;
+            font-family: 'segoe ui', sans-serif;
+            font-size: 22px;
+        }
+        main {
+            max-width: 800px;
+            margin-inline: auto;
+        }
+        h1 span {
+            display: none;
+        }
+        h1:hover span {
+            display: inline;
+        }
+        button {
+            all: initial;
+            padding: 0.25em 0.75em;
+            font-size: 1em;
+            color: #e2e2e2;
+            background-color: darkgoldenrod;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Serverless Functions</h1>
+    <main>
+        <h1>s<span>erverless </span>Functions</h1>
+
+        <p>This is a very simple way to get serverless functions running on Netlify. No npm installs are necessary, though you cannot test locally.</p>
+
+        <p>The steps are simply:</p>
+
+        <ol>
+            <li>Create a folder structure in the project</li>
+            <li>Reference this in the netlify.toml file</li>
+            <li>Create a JS file using <code>exports.handler</code> in the specified functions directory.</li>
+            <li>Upload to Netlify.</li>
+        </ol>
+
+        <p>To find the script on Netlify click on <code>Functions</code> in the sites main menu. You can see the function listed and if you click on it you get info on the function including the URL endpoint.</p>
+
+        <button class="fetch-btn">Fetch</button>
+
+        <p class="response-text"></p>
+
+
+    </main>
+    <script>
+        responseText = document.querySelector('.response-text');
+        fetchBtn = document.querySelector('.fetch-btn');
+
+        fetchBtn.addEventListener('click', async () => {
+            const response = await fetch('/.netlify/functions/hello-world')
+            .then(response => response.json()
+	)
+
+    responseText.innerText = JSON.stringify(response)
+})
+    </script>
 </body>
 </html>
